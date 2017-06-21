@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# 1. 分别定义get,set和del方法的装饰器
+
 import sys
 
 def propget(func):
@@ -64,7 +66,7 @@ print(i.myattr)  # AttributeError: 'Example' object has no attribute '_half'
 # 这几个装饰器可以用设置类对象的"计算属性"，比如某些属性不是类对象固有的，而是需要通过计算得到，就可以对相应的实例方法设置
 # @propget、@propset和@propdel装饰器，这些方法可以像属性那样被使用（用obj.someattr而不用obj.someattr()）
 
-# 另一种方式
+# 2. 使用@apply
 
 class Example(object):
     @apply  # doesn't exist in Python 3
@@ -96,7 +98,7 @@ print(i.myattr)  # 400
 del i.myattr
 print(i.myattr)  # AttributeError: 'Example' object has no attribute '_half'
 
-# 还有一种方式
+# 3. 使用@property
 
 import sys
 
